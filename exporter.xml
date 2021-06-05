@@ -85,8 +85,8 @@
 
     <defaults>
         <extrude>0</extrude>
-        <shapePadding>1</shapePadding>
-        <borderPadding>1</borderPadding>
+        <shapePadding>0</shapePadding>
+        <borderPadding>0</borderPadding>
         <trimMode>None</trimMode>               <!-- None, Trim, Crop, CropKeepPos, Polygon -->
         <sizeConstraints>AnySize</sizeConstraints>     <!-- POT, WordAligned, AnySize -->
         <writePivotPoints>false</writePivotPoints>  <!-- true, false -->
