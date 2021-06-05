@@ -1,0 +1,90 @@
+<exporter version="1.0"> <!-- file format version, must be 1.0 -->
+
+    <!-- Identifier for the exporter - should be unique.
+         This value is stored when the exporter is referenced from a saved file (.tps).
+         It is also used to select the exporter from command line.
+         Change this if you duplicated an existing exporter -->
+    <name>LibragonExporter</name>
+
+    <!-- Old exporter identifiers (optional); if a tps file with such an id is opened,
+         its id is automatically changed to the one specified in <name> -->
+    <nameAlias>LibragonExporter</nameAlias>
+
+    <!-- Name of the exporter that is shown in the framework selector dialog -->
+    <!-- Change this if you duplicated an existing exporter -->
+    <displayName>Libragon Exporter</displayName>
+
+    <!-- A description of the exporter -->
+    <description>Libdragon Exporter for N64 games</description>
+
+    <!-- Exporter version -->
+    <version>1.0</version>
+
+    <files>
+
+        <!-- A list of data files which should be generated during the publish process -->
+        <file>
+
+            <!-- name of this file type; used in the tps file
+                 and by the commandline client: for each MYDATA file
+                 a commandline option "- -MYDATA-file" is evaluated
+                 (remark: write the option without the blank between the "-" signs,
+                 it's required in the XML comment)  -->
+            <name>libdragon</name>
+
+            <!-- human readable name (used in the TexturePacker GUI) -->
+            <displayName>Libdragon Header</displayName>
+
+            <!-- file extension, without '.' -->
+            <fileExtension>h</fileExtension>
+
+            <!-- description what the file contains,
+                 used for tooltips in the GUI (optional) -->
+            <description>Header file including all that is needed to use the spritesheet.</description>
+
+            <!-- name of the template file -->
+            <template>sheet.h</template>
+
+            <!-- this file is optional, i.e. if the user does not specify an
+                 output file name, the file will not be generated;
+                 (optional, default is 'false') -->
+            <optional>false</optional>
+
+            <!-- specifies for which scaling variant this data file is generated:
+                 all:   for each variant  (default)
+                 first: only for the first variant
+                 last:  only for the last one   -->
+            <hasSeparateAutoSDFiles>all</hasSeparateAutoSDFiles>
+
+            <!-- create a file for each multipack sheet
+                 (optional, default is 'true') -->
+            <hasSeparateMultiPackFiles>true</hasSeparateMultiPackFiles>
+
+        </file>
+
+        <!-- add more <file> ... </file> tags if you need more than one output file -->
+    </files>
+
+    <!-- the following elements show/hide the corresponding input fields -->
+    <!-- in the TexturePacker user interface -->
+
+    <!-- mandatory flags: -->
+
+    <!-- Set this to true if the target framework supports trimmed sprites (sprites with
+         transparency removed). TexturePacker delivers the offsets and size of the
+         trimmed sprite to the template system. The user can still choose to disable
+         trimming from the user interface. If supportsTrimming is set to false the option
+         to enable trimming is not available in the user interface. -->
+    <supportsTrimming>false</supportsTrimming>
+
+    <!-- Set this to true if the target framework supports rotated sprites. The user can
+         still decide not to enable rotated sprites from the user interface.
+         If supportsRotation is set to false the option to enable sprite rotation is
+         not available in the user interface. -->
+    <supportsRotation>false</supportsRotation>
+
+    <!-- If enabled TexturePacker allows the user to choose non-power-of-2 sizes for sprite
+         sheets. Otherwise only power-of-2 (POT) sizes are enabled in the user interface. -->
+    <supportsNPOT>false</supportsNPOT>
+
+</exporter>
