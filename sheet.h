@@ -5,13 +5,15 @@
 #include <libdragon.h>
 #include <malloc.h>
 
-typedef enum _{{texture.trimmedName}} { {% for sprite in allSprites %}
-    {{sprite.trimmedName}}{% if not forloop.last %},{% endif %}{% endfor %}
-} {{texture.trimmedName}};
+typedef enum _{{texture.trimmedName}}_sprites { {% for sprite in allSprites %}
+    SPRITE_{{sprite.trimmedName}},{% endfor %}
+    SPRITE_{{texture.trimmedName}}_SPRITES_MAX
+} {{texture.trimmedName}}_sprites;
 
-void alloc_and_load_spritesheet_{{texture.trimmedName}}(sprite_t* sprite) {
-    int fp = dfs_open("/{{texture.trimmedName}}.sprite");
-    sprite = malloc(dfs_size(fp));
-    dfs_read(sprite, 1, dfs_size(fp), fp);
-    dfs_close(fp);
+#define alloc_and_load_spritesheet_{{texture.trimmedName}}(sprite)\
+{\
+    int fp = dfs_open("/{{texture.trimmedName}}.sprite");\
+    sprite = (sprite_t*)malloc(dfs_size(fp));\
+    dfs_read(sprite, 1, dfs_size(fp), fp);\
+    dfs_close(fp);\
 }

@@ -4,15 +4,15 @@
          This value is stored when the exporter is referenced from a saved file (.tps).
          It is also used to select the exporter from command line.
          Change this if you duplicated an existing exporter -->
-    <name>LibragonExporter</name>
+    <name>LibdragonExporter</name>
 
     <!-- Old exporter identifiers (optional); if a tps file with such an id is opened,
          its id is automatically changed to the one specified in <name> -->
-    <nameAlias>LibragonExporter</nameAlias>
+    <nameAlias>LibdragonExporter</nameAlias>
 
     <!-- Name of the exporter that is shown in the framework selector dialog -->
     <!-- Change this if you duplicated an existing exporter -->
-    <displayName>Libragon Exporter</displayName>
+    <displayName>Libdragon Exporter</displayName>
 
     <!-- A description of the exporter -->
     <description>Libdragon Exporter for N64 games</description>
@@ -21,8 +21,6 @@
     <version>1.0</version>
 
     <files>
-
-        <!-- A list of data files which should be generated during the publish process -->
         <file>
 
             <!-- name of this file type; used in the tps file
@@ -30,10 +28,10 @@
                  a commandline option "- -MYDATA-file" is evaluated
                  (remark: write the option without the blank between the "-" signs,
                  it's required in the XML comment)  -->
-            <name>libdragon</name>
+            <name>libdragon-header</name>
 
             <!-- human readable name (used in the TexturePacker GUI) -->
-            <displayName>Libdragon Header</displayName>
+            <displayName>Header</displayName>
 
             <!-- file extension, without '.' -->
             <fileExtension>h</fileExtension>
@@ -61,8 +59,6 @@
             <hasSeparateMultiPackFiles>true</hasSeparateMultiPackFiles>
 
         </file>
-
-        <!-- add more <file> ... </file> tags if you need more than one output file -->
     </files>
 
     <!-- the following elements show/hide the corresponding input fields -->
@@ -85,6 +81,16 @@
 
     <!-- If enabled TexturePacker allows the user to choose non-power-of-2 sizes for sprite
          sheets. Otherwise only power-of-2 (POT) sizes are enabled in the user interface. -->
-    <supportsNPOT>false</supportsNPOT>
+    <supportsNPOT>true</supportsNPOT>
+
+    <defaults>
+        <extrude>0</extrude>
+        <shapePadding>1</shapePadding>
+        <borderPadding>1</borderPadding>
+        <trimMode>None</trimMode>               <!-- None, Trim, Crop, CropKeepPos, Polygon -->
+        <sizeConstraints>AnySize</sizeConstraints>     <!-- POT, WordAligned, AnySize -->
+        <writePivotPoints>false</writePivotPoints>  <!-- true, false -->
+        <defaultPivotPoint>0.0,0.0</defaultPivotPoint>
+    </defaults>
 
 </exporter>
