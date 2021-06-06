@@ -1,12 +1,38 @@
 # Texture Packer Exporter for Libdragon 
 
-The exporter generates a texture accepted by Libdragonm a header file you can use to get the indexes of the images and load the images in a ```sprite_t*```.
+The exporter generates a texture accepted by Libdragon, and a header file you can use to get the indexes of the images and load the images in a ```sprite_t*```.
 
 ---
 
 ## Installation
 
 You can follow instructions on how to set a custom exporter directory [here](https://www.codeandweb.com/texturepacker/documentation/custom-exporter#preparations).
+
+After that you can clone the repo inside your custom exporter directory and select Libdragon as your exporter inside the tool.
+
+## How to Import the Texture
+
+You can import the texture by using ```mksprite``` to generate the ```*.sprite``` file and ```mkdfs``` to generate the ```packed_files.dfs``` file, after that you can use ```n64tool``` to import it.
+
+If you are using Makefile to create your ROM, you can change add these lines to create the sprite file:
+
+```
+#$(MKSPRITEPATH) [bits] [columns] [rows] [source.png] [destination.sprite]
+packed_files.dfs:
+	mkdir -p res
+	$(MKSPRITEPATH) 16 7 1 ./path_to_texture_dir/your_texture_name.png ./res/your_texture_name.sprite
+	$(MKDFSPATH) packed_files.dfs ./res/
+```
+
+And change the existing line to the one below to import the file into the binary:
+
+```
+$(N64TOOL) $(N64_FLAGS) -t $(PROG_TAG) $(PROG_NAME).bin -s 1M packed_files.dfs
+```
+
+## Remarks
+
+Be sure to have textures of same width and height for it to be imported correctly by Libdragon.
 
 ---
 ## Options
