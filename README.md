@@ -1,6 +1,6 @@
 # Texture Packer Exporter for Libdragon 
 
-The exporter generates a texture accepted by Libdragon, and a header file you can use to get the indexes of the images and load the images in a ```sprite_t*```.
+The exporter generates a texture accepted by Libdragon, and a header file you can use to get the indexes of the images and load the images as ```sprite_t*```.
 
 ---
 
@@ -29,6 +29,8 @@ And change the existing line to the one below to import the file into the binary
 ```
 $(N64TOOL) $(N64_FLAGS) -t $(PROG_TAG) $(PROG_NAME).bin -s 1M packed_files.dfs
 ```
+
+You can also use it in a different way by following [this tutorial](https://www.christopherbonhage.com/software/2017/06/07/flappy-bird-nintendo-64-part-3.html).
 
 ## Remarks
 
